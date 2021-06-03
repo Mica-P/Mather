@@ -50,39 +50,42 @@
         </nav>
     </details>
     <br><br>
-    <div class="container mt-5">
-        <div class="row form-group">
-            <div class="col-sm-12">
-                <select class="form-control" id="opKeuze" onchange="opzetKeuze()">
-                    <option value="tafel">Tafel van</option>
-                    <option value="macht">Machtreeks van</option>
-                    <option value="breuk">Breukenreeks</option>
-                    <option value="kwadraat">Kwadratenreeks van</option>
-                </select>
+    <section class="content-box">
+        <div class="container mt-5">
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <select class="form-control" id="opKeuze" onchange="opzetKeuze()">
+                        <option value="tafel">Tafel van</option>
+                        <option value="macht">Machtreeks van</option>
+                        <option value="breuk">Breukenreeks</option>
+                        <option value="kwadraat">Kwadratenreeks van</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="invoeren" id="txt_Ond3_In" />
+                </div>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="tot" id="txt_Ond3_Tot" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-3 mt-5">
+                    <button class="btn btn-primary form-control" onclick="clear()">Verwijderen</button>
+                </div>
+                <div class="col-sm-3  mt-5">
+                    <button class="btn btn-secondary form-control" onclick="Bereken()">Resultaat</button>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-12">
+                    <div style="background-color: #c6ebf8;" id="dResultaat" class="jumbotron"></div>
+                </div>
             </div>
         </div>
-        <div class="row form-group">
-            <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="invoer" id="txt_Ond3_In" />
-            </div>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="tot" id="txt_Ond3_Tot" />
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-sm-3 mt-5">
-                <button class="btn btn-primary form-control" onclick="clear()">Verwijderen</button>
-            </div>
-            <div class="col-sm-3  mt-5">
-                <button class="btn btn-secondary form-control" onclick="Bereken()">Resultaat</button>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-lg-12">
-                <div id="dResultaat" class="jumbotron"></div>
-            </div>
-        </div>
-    </div>
+    </section>
+
 </body>
 
 </html>

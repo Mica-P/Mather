@@ -1,6 +1,6 @@
-.content-box {
-    margin-top: 60vh;
-}
+@charset "UTF-8";
+@media screen and (min-width: 768.1px){
 body {
-    background-color: rebeccapurple;
+    background-color:  #E7F6FE;
+}
 }
