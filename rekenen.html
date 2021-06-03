@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="nl" dir="ltr">
+﻿<!DOCTYPE html>
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="language" content="nl">
-    <meta name="description" content="toetscase, website">
-    <meta name="keywords" content="toetscase, website">
-    <meta name="author" content="Mica Paulo">
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rekenen - Mather</title>
-    <link rel="stylesheet" href="./css/homepage.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="./css/rekenen.css">
+    <link rel="stylesheet" href="./css/homepage.css">
+    <script src="js/mathmate.js"></script>
+
+    <title>rekenen - Mather</title>
 </head>
 
 <body>
@@ -19,15 +24,16 @@
             <img class="logo" src="./images/logo.png" alt="logo">
         </a>
     </section>
+
     <nav class="first-nav">
         <ul>
             <li><a href="#"></a></li>
             <li><a href="presentatie.html">Presentatie</a></li>
-            <li><a href="hsfs.html">Rekenen</a></li>
-            <li><a href="#">Reeksen</a></li>
-            <li><a href="#">Talstelsel</a></li>
-            <li><a href="#">Dobbelsteen</a></li>
-            <li><a href="#">Angry Bird</a></li>
+            <li><a href="rekenen.html">Rekenen</a></li>
+            <li><a href="reeksen.html">Reeksen</a></li>
+            <li><a href="talstelsel.html">Talstelsel</a></li>
+            <li><a href="dobbelsteen.html">Dobbelsteen</a></li>
+            <li><a href="angrybird.html">Angry Bird</a></li>
         </ul>
     </nav>
     <details>
@@ -35,23 +41,48 @@
         <nav class="second-nav">
             <ul>
                 <li><a href="presentatie.html">Presentatie</a></li>
-                <li><a href="hsfs.html">Rekenen</a></li>
-                <li><a href="#">Reeksen</a></li>
-                <li><a href="#">Talstelsel</a></li>
-                <li><a href="#">Dobbelsteen</a></li>
-                <li><a href="#">Angry Bird</a></li>
+                <li><a href="rekenen.html">Rekenen</a></li>
+                <li><a href="reeksen.html">Reeksen</a></li>
+                <li><a href="talstelsel.html">Talstelsel</a></li>
+                <li><a href="dobbelsteen.html">Dobbelsteen</a></li>
+                <li><a href="angrybird.html">Angry Bird</a></li>
             </ul>
         </nav>
     </details>
-    <section class="text-box">
-        <h1>Welkom in Mather!</h1>
-        <p>Hier leer je meer hoe je beter wordt met wiskundige onderwerpen</p>
-    </section>
-    <section class="main">
-        <img class="img1" src="./images/img1.svg" alt="">
-        <section class="background"></section>
-    </section>
-    <footer class="footer"></footer>
+    <br><br>
+    <div class="container mt-5">
+        <div class="row form-group">
+            <div class="col-sm-12">
+                <select class="form-control" id="opKeuze" onchange="opzetKeuze()">
+                    <option value="tafel">Tafel van</option>
+                    <option value="macht">Machtreeks van</option>
+                    <option value="breuk">Breukenreeks</option>
+                    <option value="kwadraat">Kwadratenreeks van</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-10">
+                <input type="number" class="form-control" placeholder="invoer" id="txt_Ond3_In" />
+            </div>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" placeholder="tot" id="txt_Ond3_Tot" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-3 mt-5">
+                <button class="btn btn-primary form-control" onclick="clear()">Verwijderen</button>
+            </div>
+            <div class="col-sm-3  mt-5">
+                <button class="btn btn-secondary form-control" onclick="Bereken()">Resultaat</button>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-lg-12">
+                <div id="dResultaat" class="jumbotron"></div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

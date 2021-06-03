@@ -7,11 +7,11 @@
     text-decoration: 0;
     list-style: none;
     box-sizing: border-box;
-    overflow: hidden;
     font-family: 'Roboto', sans-serif;
 }
 /*Mobile screen and tablet potrait screen*/
 @media screen and (min-width: 100px) and (max-width: 768px){
+    * {   overflow: hidden;}
     .first-nav {display: none;}
     .logo-box{
         height: 12vh;
@@ -112,10 +112,5 @@
         margin-top: 10vh;
         color: #008BBF;
         letter-spacing: 3px;
-    }
-    
-    .footer {
-        height: 8.5vh;
-        background-color: #008BBF;
     }
 }
