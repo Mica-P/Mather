@@ -2,5 +2,23 @@
 @media screen and (min-width: 768.1px){
 body {
     background-color:  #E7F6FE;
+    height: 150vh;
+}
+.content-box {
+    margin-left: -15vw;
+}
+.container-fluid {
+    margin-top: 10vh;
+}
+.moeilijk-box {
+    margin-top: 3vh;
+}
+.resultaat-box {
+    margin-top: 10vh;
+}
+
+.text-2 {
+    margin-top: 5vh;
+    margin-left: 1vw;
 }
 }

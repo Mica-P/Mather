@@ -7,7 +7,7 @@
     text-decoration: 0;
     list-style: none;
     box-sizing: border-box;
-    overflow: hidden;
+   overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
 }
 /*Mobile screen and tablet potrait screen*/
