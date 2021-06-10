@@ -54,7 +54,7 @@
         <h2 class="text-1"><b>Makkelijk rekenen</b></i></h2>
         <div class="container mt-2">
             <div class="row form-group">
-                <div class="col-sm-2">
+                <div class="col-sm-10">
                     <select class="form-control" id="opKeuze" onchange="opzetKeuze()">
                         <option value="tafel">Tafel van</option>
                         <option value="macht">Machtreeks van</option>
@@ -64,21 +64,21 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-sm-2">
+                <div class="col-sm-10">
                     <input type="number" class="form-control" placeholder="invoeren" id="txt_Ond3_In" />
                 </div>
                 <div class="w-100"></div>
-                <div class="col-sm-2">
+                <div class="col-sm-10">
                     <input type="number" class="form-control" placeholder="tot" id="txt_Ond3_Tot" />
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-sm-2  mt-5">
+                <div class="col-sm-5  mt-5">
                     <button class="btn btn-secondary form-control" onclick="Bereken()">Resultaat</button>
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-lg-5">
+                <div class="col-lg-10">
                     <div style="background-color: #c6ebf8;" id="dResultaat" class="jumbotron"></div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
     <section class="second-box ">
         <div class='container-fluid'>
             <h2 class="text-2"><b>Moeilijke rekenen</b></i></h2>
-            <div class="col-sm-2 moeilijk-box">
+            <div class="col-sm-5 moeilijk-box">
                 <select id='options' class="form-control">
                     <option value="BINDEC">Binair to Decimaal</option>
                     <option value="BINHEX">Binair to Hexadecimaal</option>
@@ -97,18 +97,20 @@
                     <option value="DECBIN">Decimaal to Binair</option>
                 </select>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-5">
                 <input type="text" id='initVal' class="form-control" placeholder='Invoeren'>
             </div>
-            <div class="col-sm-2">
-                <button class="btn btn-secondary form-control resultaat-box" onclick='convert()'>Resultaat</button>
+            <div class="col-sm-2 ">
+                <div class="btn btn-secondary form-control resultaat-box " onclick='convert()'>Resultaat</div>
             </div>
             <br> <br>
-            <div class="col-lg-5">
-                <div style="background-color: #c6ebf8;" class="jumbotron second-output" id="out"></div>
+            <div class="col-lg-5" class="bluebox">
+                <textarea class="box" style="background-color: #c6ebf8;" id="out" cols="40" rows="1"></textarea>
             </div>
         </div>
     </section>
+
+    <br> <br>
 </body>
 
 </html>
@@ -124,11 +126,9 @@
         margin-bottom: 5vh;
     }
 
-
-
     .second-box {
-        margin-top: 2vh;
-
+        margin-top: 50vh;
+        margin-left: -5vw;
     }
 
     /*Mobile screen and tablet potrait screen*/
@@ -156,33 +156,45 @@
             case "BINDEC":
                 if (isBin(initValue) == true) {
                     var res = convertBinaryDecimal(initValue);
+                } else {
+                    alert("You idiot.");
                 }
                 break;
             case "DECBIN":
                 if (isDec(initValue) == true) {
                     var res = convertDecimalBinary(initValue);
+                } else {
+                    alert("You idiot.");
                 }
                 break;
             case "DECHEX":
                 if (isDec(initValue) == true) {
                     var bin = convertDecimalBinary(initValue);
                     var res = convertBinaryHexadecimal(bin);
+                } else {
+                    alert("You idiot.");
                 }
                 break;
             case "BINHEX":
                 if (isBin(initValue) == true) {
                     var res = convertBinaryHexadecimal(initValue);
+                } else {
+                    alert("You idiot.");
                 }
                 break;
             case "HEXDEC":
                 if (isHex(initValue) == true) {
                     var res = convertHexadecimalDecimal(initValue);
+                } else {
+                    alert("You idiot.");
                 }
                 break;
             case "HEXBIN":
                 if (isHex(initValue) == true) {
                     var dec = convertHexadecimalDecimal(initValue);
                     var res = convertDecimalBinary(dec);
+                } else {
+                    alert("You idiot.");
                 }
                 break;
         }
@@ -199,6 +211,48 @@
             total = total + revArr[i] * Math.pow(2, i);
         }
         return total;
+    }
+
+    // This function converts between dec and bin
+    function convertDecimalBinary(val) {
+        let rems = [];
+        do {
+            rems.push(val % 2);
+            val = Math.floor(val / 2);
+        } while (val != 0);
+        return rems.reverse().join("");
+    }
+
+    // This function converts between binary and hexadecimal
+    function convertBinaryHexadecimal(val) {
+        val = val.split("");
+        val = val.reverse();
+        while (val.length % 4 != 0) {
+            val.push("0");
+        }
+        val = val.reverse();
+        let arr = [];
+        let count = 0;
+        for (i = 0; i < Math.floor(val.length / 4); i++) {
+            arr.push([]);
+            for (a = 0; a < 4; a++) {
+                arr[i][a] = val[i * 4 + a];
+            }
+        }
+        let finalArr = [];
+        for (i = 0; i < arr.length; i++) {
+            for (a = 0; a < 4; a++) {
+                count += arr[i][a] * Math.pow(2, 3 - a);
+            }
+            finalArr[i] = count;
+            count = 0;
+        }
+        for (i = 0; i < finalArr.length; i++) {
+            if (finalArr[i] > 9) {
+                finalArr[i] = letters[finalArr[i] - 10];
+            }
+        }
+        return finalArr.join("");
     }
 
     // This function converts between hexadecmial and decimal
@@ -245,4 +299,5 @@
         } else {
             return true;
         }
-    }</script>
+    }
+    /script>
