@@ -14,7 +14,7 @@ function Bereken() {
             document.getElementById("dResultaat").innerHTML = Machten();
             break;
         case "breuk":
-            document.getElementById("dResultaat").innerHTML = Breuken();
+            document.getElementById("dResultaat").innerHTML = Machten();
             break;
         case "kwadraat":
 
@@ -58,20 +58,43 @@ function Machten() {
 }
 
 function Breuken() {
-
-
-    for (i = 1; i < x + y; ++1) {
-        for (j = 1; j < x + y; ++j) {
-            if (x * i == y * j) {
-                ans = j + "/" + i;
-                output();
-                return;
-            }
+    /**
+     * Converts numbers to fractions:
+     * - 1.25 to 1 1/4
+     * - 2 to 2
+     */
+    var numberToFraction = function (amount) {
+        // This is a whole number and doesn't need modification.
+        if (parseFloat(amount) === parseInt(amount)) {
+            return amount;
         }
-    }
-    return resultaat;
+        // Next 12 lines are cribbed from https://stackoverflow.com/a/23575406.
+        var gcd = function (a, b) {
+            if (b < 0.0000001) {
+                return a;
+            }
+            return gcd(b, Math.floor(a % b));
+        };
+        var len = amount.toString().length - 2;
+        var denominator = Math.pow(10, len);
+        var numerator = amount * denominator;
+        var divisor = gcd(numerator, denominator);
+        numerator /= divisor;
+        denominator /= divisor;
+        var base = 0;
+        // In a scenario like 3/2, convert to 1 1/2
+        // by pulling out the base number and reducing the numerator.
+        if (numerator > denominator) {
+            base = Math.floor(numerator / denominator);
+            numerator -= base * denominator;
+        }
+        amount = Math.floor(numerator) + '/' + Math.floor(denominator);
+        if (base) {
+            amount = base + ' ' + amount;
+        }
+        return amount;
+    };
 }
-
 
 function Kwadraten() {
 
