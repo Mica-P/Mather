@@ -14,7 +14,7 @@ function Bereken() {
             document.getElementById("dResultaat").innerHTML = Machten();
             break;
         case "breuk":
-
+            document.getElementById("dResultaat").innerHTML = Breuken();
             break;
         case "kwadraat":
 
@@ -58,7 +58,27 @@ function Machten() {
 }
 
 function Breuken() {
+    GetalInvoer = document.getElementById("txt_Ond3_In").value;
+    GetalTot = document.getElementById("txt_Ond3_Tot").value;
 
+    t1 = document.getElementById("n1");
+    t2 = document.getElementById("n2");
+    x = t1.value - 0;
+    y = t2.value - 0;
+
+    message = document.getElementById("mess");
+    message.innerHTML = ("This simplifies to " + ans + " .");
+
+    getvals();
+    for (i = 1; i < x + y; ++1) {
+        for (j = 1; j < x + y; ++j) {
+            if (x * i == y * j) {
+                ans = j + "/" + i;
+                output();
+                return;
+            }
+        }
+    }
 }
 
 function Kwadraten() {
@@ -66,7 +86,7 @@ function Kwadraten() {
 }
 
 // Letters for hexadecimal conversion
-const letters = ["A", "B", "C", "D", "E", "F"];
+const letters = ["A", "B", "C", "D", "E", "F", "G"];
 
 function convert() {
     let convType = document.getElementById("options").value;
@@ -74,36 +94,19 @@ function convert() {
 
     // The correct conversion is decided based on the dropdown selection
     switch (convType) {
-        case "BINDEC":
-            if (isBin(initValue) == true) {
-                var res = convertBinaryDecimal(initValue);
-            }
-            break;
-        case "DECBIN":
-            if (isDec(initValue) == true) {
-                var res = convertDecimalBinary(initValue);
-            }
-            break;
-        case "DECHEX":
-            if (isDec(initValue) == true) {
-                var bin = convertDecimalBinary(initValue);
-                var res = convertBinaryHexadecimal(bin);
-            }
-            break;
         case "BINHEX":
             if (isBin(initValue) == true) {
                 var res = convertBinaryHexadecimal(initValue);
-            }
-            break;
-        case "HEXDEC":
-            if (isHex(initValue) == true) {
-                var res = convertHexadecimalDecimal(initValue);
+            } else {
+                alert("You idiot.");
             }
             break;
         case "HEXBIN":
             if (isHex(initValue) == true) {
                 var dec = convertHexadecimalDecimal(initValue);
                 var res = convertDecimalBinary(dec);
+            } else {
+                alert("You idiot.");
             }
             break;
     }
@@ -112,14 +115,47 @@ function convert() {
     document.getElementById("out").value = res;
 }
 
-// This function converts between bin and dec
-function convertBinaryDecimal(val) {
-    let revArr = val.split("").reverse();
-    let total = 0;
-    for (i = 0; i < revArr.length; i++) {
-        total = total + revArr[i] * Math.pow(2, i);
+
+// This function converts between dec and bin
+function convertDecimalBinary(val) {
+    let rems = [];
+    do {
+        rems.push(val % 2);
+        val = Math.floor(val / 2);
+    } while (val != 0);
+    return rems.reverse().join("");
+}
+
+// This function converts between binary and hexadecimal
+function convertBinaryHexadecimal(val) {
+    val = val.split("");
+    val = val.reverse();
+    while (val.length % 4 != 0) {
+        val.push("0");
     }
-    return total;
+    val = val.reverse();
+    let arr = [];
+    let count = 0;
+    for (i = 0; i < Math.floor(val.length / 4); i++) {
+        arr.push([]);
+        for (a = 0; a < 4; a++) {
+            arr[i][a] = val[i * 4 + a];
+        }
+    }
+    let finalArr = [];
+    for (i = 0; i < arr.length; i++) {
+        for (a = 0; a < 4; a++) {
+            count += arr[i][a] * Math.pow(2, 3 - a);
+        }
+        finalArr[i] = count;
+        count = 0;
+    }
+    for (i = 0; i < finalArr.length; i++) {
+        if (finalArr[i] > 9) {
+            finalArr[i] = letters[finalArr[i] - 10];
+        }
+    }
+    return finalArr.join("");
 }
 
 // This function converts between hexadecmial and decimal
@@ -127,7 +163,7 @@ function convertHexadecimalDecimal(val) {
     val = val.split("");
 
     for (i = 0; i < val.length; i++) {
-        if (val[i].search(/[a-f]/i) != -1) {
+        if (val[i].search(/[a-g]/i) != -1) {
             let index = letters.indexOf(val[i]);
             index = index + 10;
             val[i] = index;
@@ -146,14 +182,6 @@ function convertHexadecimalDecimal(val) {
 
 function isBin(string) {
     if (string.search(/[2-9]/) != -1 || string.search(/[a-z]/i) != -1) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function isDec(string) {
-    if (string.search(/[a-z]/i) != -1) {
         return false;
     } else {
         return true;

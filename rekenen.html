@@ -86,27 +86,17 @@
     </section>
     <section class="second-box ">
         <div class='container-fluid'>
-            <h2 class="text-2"><b>Moeilijke rekenen</b></i></h2>
-            <div class="col-sm-5 moeilijk-box">
-                <select id='options' class="form-control">
-                    <option value="BINDEC">Binair to Decimaal</option>
-                    <option value="BINHEX">Binair to Hexadecimaal</option>
-                    <option value="HEXDEC">Hexadecimaal to Decimaal</option>
-                    <option value="HEXBIN">Hexadecimaal to Binair</option>
-                    <option value="DECHEX">Decimaal to Hexadecimaal</option>
-                    <option value="DECBIN">Decimaal to Binair</option>
-                </select>
-            </div>
-            <div class="col-sm-5">
-                <input type="text" id='initVal' class="form-control" placeholder='Invoeren'>
-            </div>
-            <div class="col-sm-2 ">
-                <div class="btn btn-secondary form-control resultaat-box " onclick='convert()'>Resultaat</div>
-            </div>
+            <h2 class="text-2"><b>Moeilijk rekenen</b></i></h2>
+            <select class="col-sm-5 form-control" id='options'>
+                <option value="BINHEX">Binary to Hexadecimal</option>
+                <option value="HEXBIN">Hexadecimal to Binary</option>
+            </select>
+
+            <input class="col-sm-5 form-control" type="text" id='initVal' placeholder='Invoeren'>
+            <button class="btn btn-secondary form-control col-sm-3 mt-5" onclick='convert()'>Resultaat</button>
             <br> <br>
-            <div class="col-lg-5" class="bluebox">
-                <textarea class="box" style="background-color: #c6ebf8;" id="out" cols="40" rows="1"></textarea>
-            </div>
+            <textarea style="background-color: #c6ebf8;" class="jumbotron" placeholder='Output' id="out" cols="40"
+                rows="1"></textarea>
         </div>
     </section>
 
@@ -117,8 +107,8 @@
 <style>
     .container-fluid {
         position: absolute;
-        margin-top: -58vh;
-        margin-left: 50vw;
+        margin-top: -38vh;
+        margin-left: 15vw;
     }
 
     .text-1 {
@@ -126,9 +116,14 @@
         margin-bottom: 5vh;
     }
 
+    .text-2 {
+        margin-left: 1vw;
+        margin-bottom: 5vh;
+    }
+
     .second-box {
         margin-top: 50vh;
-        margin-left: -5vw;
+        margin-left: -3vw;
     }
 
     /*Mobile screen and tablet potrait screen*/
@@ -145,7 +140,7 @@
 </style>
 <script>
     // Letters for hexadecimal conversion
-    const letters = ["A", "B", "C", "D", "E", "F"];
+    const letters = ["A", "B", "C", "D", "E", "F", "G"];
 
     function convert() {
         let convType = document.getElementById("options").value;
@@ -153,38 +148,9 @@
 
         // The correct conversion is decided based on the dropdown selection
         switch (convType) {
-            case "BINDEC":
-                if (isBin(initValue) == true) {
-                    var res = convertBinaryDecimal(initValue);
-                } else {
-                    alert("You idiot.");
-                }
-                break;
-            case "DECBIN":
-                if (isDec(initValue) == true) {
-                    var res = convertDecimalBinary(initValue);
-                } else {
-                    alert("You idiot.");
-                }
-                break;
-            case "DECHEX":
-                if (isDec(initValue) == true) {
-                    var bin = convertDecimalBinary(initValue);
-                    var res = convertBinaryHexadecimal(bin);
-                } else {
-                    alert("You idiot.");
-                }
-                break;
             case "BINHEX":
                 if (isBin(initValue) == true) {
                     var res = convertBinaryHexadecimal(initValue);
-                } else {
-                    alert("You idiot.");
-                }
-                break;
-            case "HEXDEC":
-                if (isHex(initValue) == true) {
-                    var res = convertHexadecimalDecimal(initValue);
                 } else {
                     alert("You idiot.");
                 }
@@ -203,15 +169,6 @@
         document.getElementById("out").value = res;
     }
 
-    // This function converts between bin and dec
-    function convertBinaryDecimal(val) {
-        let revArr = val.split("").reverse();
-        let total = 0;
-        for (i = 0; i < revArr.length; i++) {
-            total = total + revArr[i] * Math.pow(2, i);
-        }
-        return total;
-    }
 
     // This function converts between dec and bin
     function convertDecimalBinary(val) {
@@ -260,7 +217,7 @@
         val = val.split("");
 
         for (i = 0; i < val.length; i++) {
-            if (val[i].search(/[a-f]/i) != -1) {
+            if (val[i].search(/[a-g]/i) != -1) {
                 let index = letters.indexOf(val[i]);
                 index = index + 10;
                 val[i] = index;
@@ -285,14 +242,6 @@
         }
     }
 
-    function isDec(string) {
-        if (string.search(/[a-z]/i) != -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     function isHex(string) {
         if (string.search(/[g-z]/i) != -1) {
             return false;
@@ -300,4 +249,5 @@
             return true;
         }
     }
-    /script>
+
+</script>
