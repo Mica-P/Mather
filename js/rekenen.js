@@ -58,18 +58,8 @@ function Machten() {
 }
 
 function Breuken() {
-    GetalInvoer = document.getElementById("txt_Ond3_In").value;
-    GetalTot = document.getElementById("txt_Ond3_Tot").value;
 
-    t1 = document.getElementById("n1");
-    t2 = document.getElementById("n2");
-    x = t1.value - 0;
-    y = t2.value - 0;
 
-    message = document.getElementById("mess");
-    message.innerHTML = ("This simplifies to " + ans + " .");
-
-    getvals();
     for (i = 1; i < x + y; ++1) {
         for (j = 1; j < x + y; ++j) {
             if (x * i == y * j) {
@@ -79,7 +69,9 @@ function Breuken() {
             }
         }
     }
+    return resultaat;
 }
+
 
 function Kwadraten() {
 
