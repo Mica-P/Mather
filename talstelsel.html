@@ -8,9 +8,14 @@
     <meta name="keywords" content="toetscase, website">
     <meta name="author" content="Mica Paulo">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <title>Talstelsel - Mather</title>
     <link rel="stylesheet" href="./css/homepage.css">
     <link rel="stylesheet" href="./css/talstelsel.css">
+    <script src="./js/talstelsel.js"></script>
 </head>
 
 <body>
@@ -43,6 +48,51 @@
             </ul>
         </nav>
     </details>
+
+    <section class="second-box ">
+        <div class='container-fluid'>
+            <h2 class="text-2"><b>Moeilijk rekenen</b></i></h2>
+            <select class="col-sm-5 form-control" id='options'>
+                <option value="BINHEX">Binary to Hexadecimal</option>
+                <option value="HEXBIN">Hexadecimal to Binary</option>
+            </select>
+
+            <input class="col-sm-5 form-control" type="text" id='initVal' placeholder='Invoeren'>
+            <button class="btn btn-secondary form-control col-sm-3 mt-5" onclick='convert()'>Resultaat</button>
+            <br> <br>
+            <textarea style="background-color: #c6ebf8;" class="jumbotron" id="out" cols="40" rows="1"></textarea>
+        </div>
+    </section>
+    <div class="third-box">
+        <div class="outer">
+            <div class="middle">
+                <div class="inner">
+                    <div class="paddingWrapper">
+                        <div class='container-fluid'>
+                            <center>
+                                <h2 class="title">
+                                    Factorizer
+                                </h2>
+                                <input class="col-lg-10  form-control" id="input" type="number" />
+                                <button class="btn btn-secondary form-control col-sm-5 mt-5" type="button"
+                                    onClick="getPrimeFactorization();">
+                                    Resultaat!
+                                </button>
+                                <p style="border: 1px solid #c6ebf8; background-color: #c6ebf8;"
+                                    class="jumbotron result col-lg-10  form-control" id="result" />
+                                <p id="product" />
+                            </center>
+                        </div>
+                        <div id="warningDiv" class="paddingWrapper">
+                            <p id="warning" style="display: none;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
