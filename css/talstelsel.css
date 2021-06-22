@@ -1,0 +1,89 @@
+@charset "UTF-8";
+@media screen and (min-width: 768.1px){
+body {
+    background-color:  #E7F6FE;
+    height: 150vh;
+}
+.content-box {
+    margin-left: -15vw;
+}
+.text-2 {
+    margin-left: 1vw;
+    margin-bottom: 5vh;
+    font-size: 2rem;
+}
+
+.second-box {
+    margin-top: 10vh;
+    margin-left:10vw;
+}
+
+
+.title {
+    font-size: 2em;
+    margin: .5em;
+  }
+  
+  .paddingWrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  #warningDiv {
+    border-color: FFA68F;
+    border-width: 3px;
+  }
+  
+  .third-box input {
+    height: 3em;
+    width: 47em;
+    font-size: .75em;
+   margin-left: 8vw;
+  }
+  button {
+  
+    height: 2.35em;
+    width: 7em;
+    font-family: Montserrat;
+    font-size: .75em;
+    color: #5F2617;
+  }
+  
+  .outer {
+    display: table;
+    position: absolute;
+  }
+  .third-box {
+      margin-top: 1vh;
+  }
+  .middle {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .inner {
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  .result {
+      margin-left: 8vw;
+  }
+}
+/*Mobile screen and tablet potrait screen*/
+@media screen and (min-width: 100px) and (max-width: 768px) {
+   
+
+    .second-box {
+        margin-top: 5vh;
+        margin-left: -15vw;
+    }
+    .third-box input {
+        height: 3em;
+        width: 47em;
+        font-size: .75em;
+       margin-left: 8vw;
+      }
+      .text-2 {
+          margin-left: 15vw;
+      }
+}
