@@ -2,6 +2,13 @@ var GetalInvoer;
 var GetalTot;
 var resultaat;
 
+function myFunction() {
+    alert("Klik op Tafel van en je gaat verschillende opties zien. Voer je nummer in invoeren en de tot");
+}
+window.onload = function () {
+    document.getElementById("uitl0").addEventListener("click", myFunction);
+}
+
 function Bereken() {
     document.getElementById("dResultaat").innerHTML = "";
     resultaat = "";

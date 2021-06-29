@@ -1,9 +1,10 @@
-/* More algorithm information here:     
- *https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm
-*** This tool only guarantees accurate factorization up to 15 digits as JavaScript considers Integers accurate to 15 digits. That being said sometimes it does correctly factor some larger Integers whereas some fail. For an input with more than 15 digits, compare your input to the product to evaulate whether an approximation was made in the calculation.
 
-Still trying to identify why some are approximated and some work out. Preliminary tests indicate that large integers with a lot of small factors fail whereas large integers with fewer small factors succeed.*/
-
+window.onload = function () {
+    document.getElementById("uitl0").addEventListener("click", myFunction);
+}
+function myFunction() {
+    alert("Type je nummers die je wilt factorizer. Klik op de knop en resultaat komt eraan!");
+}
 var primeFactors;
 var product;
 

@@ -7,7 +7,10 @@ body {
 .content-box {
     margin-left: -15vw;
 }
-
+.mascot {
+    margin-top: -20vh;
+    margin-left: 80vw;
+}
 
 
 }

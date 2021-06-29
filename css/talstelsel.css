@@ -68,6 +68,10 @@ body {
   .result {
       margin-left: 8vw;
   }
+  .mascot {
+    margin-top: 20vh;
+    margin-left: 80vw;
+  }
 }
 /*Mobile screen and tablet potrait screen*/
 @media screen and (min-width: 100px) and (max-width: 768px) {
