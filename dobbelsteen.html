@@ -43,6 +43,30 @@
             </ul>
         </nav>
     </details>
+    <div id="container">
+        <div id="wheel"></div>
+        <div id="needle"></div>
+    </div>
+    <img src="./images/fortune wheel (2).png" style="height: 50vh; margin-top: 10vh;" alt="">
+    <label for="number">Rotate to number </label><input type="text" id="number" value="5" /><br />
+    <label for="rotations">Rotations </label><input type="text" id="rotations" value="3" /><br />
+    <label for="duration">Duration </label><input type="text" id="duration" value="4" /><br />
+    <label for="type">Rotation type </label><select id="type">
+        <option value="cubic-bezier(0.000, 0.000, 0.000, 1)">custom</option>
+        <option value="ease">ease</option>
+        <option value="ease-in">ease-in</option>
+        <option value="ease-out">ease-out</option>
+        <option value="ease-in-out">ease-in-out</option>
+        <option value="linear">linear</option>
+    </select><br />
+    <button id="rotate" value="Rotate">Rotate</button>
+    <button id="reset" value="Reset">Reset</button>
+
+    <style>
+        body {
+            background-color: #E7F6FE;
+        }
+    </style>
 </body>
 
 </html>
